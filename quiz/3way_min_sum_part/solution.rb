@@ -26,20 +26,22 @@ def min_sum_factorize(n, num_factors)
     best = [n] + [1] * (num_factors - 1)
     best_sum = best.sum
 
+    
     get_divisors(n).each do |x|
         if x ** num_factors > n
             next
         end
-        if n % x == 0
+        p x
+        #if n % x == 0
             rest = min_sum_factorize( n/x, num_factors - 1)
             total = rest.sum + x
             if total < best_sum
                 best = [x] + rest
                 best_sum = total
             end
-        end
+        #end
     end
     return best
 end
 
-p min_sum_factorize(1089, 2)
+p min_sum_factorize(1890, 3)
